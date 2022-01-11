@@ -38,3 +38,5 @@ class Rating(models.Model):
     def __str__(self):
         return self.design_rate
 
+    def get_absolute_url(self):
+        return reverse('home')

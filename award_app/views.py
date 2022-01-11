@@ -5,7 +5,7 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
-    return render(request, "award_app/home.html", {})
+    return render(request, "home.html", {})
 
 def Signup(request):
     form=SignupForm()
