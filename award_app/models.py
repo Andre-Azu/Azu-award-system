@@ -1,9 +1,11 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your models here.
 class Project(models.Model):
+    profile=models.ForeignKey(User, on_delete=models.CASCADE)
     title=models.CharField(max_length=500)
     image=CloudinaryField('image')
     description=models.TextField()
@@ -18,14 +20,14 @@ class Project(models.Model):
 
 
 class Profile(models.Model):
-    name=models.OneToOneField(User, on_delete=models.CASCADE)
+    name=models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     bio=models.TextField()
     profile_pic=CloudinaryField('image')
-    projects=models.ForeignKey(Project, on_delete=models.CASCADE)
+    #projects=models.ForeignKey(Project, on_delete=models.CASCADE)
     contact=models.TextField()
 
     def __str__(self):
-        return self.bio
+        return self.name
 
 class Rating(models.Model):
     design=models.ForeignKey(Project, related_name="design_rated", on_delete=models.CASCADE)
