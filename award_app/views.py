@@ -62,6 +62,14 @@ class CreateProfileView(CreateView):
         form.instance.user=self.request.user
         return super().form_valid(form)
 
+
+def viewProject(request, pk):
+    project=Project.objects.filter(id=pk)
+    current_user=request.user
+
+    return render(request, 'viewproject.html', {"project":project})
+
+
 @login_required
 def uploadProject(request):
     form=UploadNewProject()
@@ -80,3 +88,5 @@ def uploadProject(request):
         form=UploadNewProject()
 
     return render(request, 'uploadproject.html', {"form":form})
+
+
