@@ -70,7 +70,7 @@ def viewProject(request, pk):
     return render(request, 'viewproject.html', {"project":project})
 
 
-@login_required
+@login_required(login_url='login')
 def uploadProject(request):
     form=UploadNewProject()
     current_user=request.user
