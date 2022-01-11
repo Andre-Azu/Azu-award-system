@@ -4,8 +4,15 @@
 
 {% block content %}
 <div class="container-fluid">
-    <h1>Completed projects to be rated
-    </h1>
+    <h1>Completed projects to be rated</h1>
+    <div>
+        {% for project in projects %}
+        <p>{{project.title}}</p>
+        <p><a href="{{project.link}}">{{project.link}}</a></p>
+        <img src="{{project.image.url}}" alt="{{project.description}}">
+        <p>{{project.description}}</p>
+        {% endfor %}
+    </div>
 </div>
 
 

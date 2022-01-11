@@ -1,14 +1,16 @@
 from django.shortcuts import render,redirect
-from .forms import SignupForm,CreateProfile
+from .forms import SignupForm,CreateProfile,UploadNewProject
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.views.generic.edit import CreateView
-from .models import Profile
+from .models import Profile, Project, Rating
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 def home(request):
-    return render(request, "home.html", {})
+    projects=Project.objects.all()
+    return render(request, "home.html", {"projects":projects})
 
 def Signup(request):
     form=SignupForm()
@@ -59,3 +61,22 @@ class CreateProfileView(CreateView):
     def form_valid(self, form):
         form.instance.user=self.request.user
         return super().form_valid(form)
+
+@login_required
+def uploadProject(request):
+    form=UploadNewProject()
+    current_user=request.user
+
+    if request.method =="POST":
+        form=UploadNewProject(request.POST, request.FILES)
+        if form.is_valid():
+            project=form.save(commit=False)
+            project.profile=current_user
+            project.save()
+
+        return redirect('home')
+
+    else:
+        form=UploadNewProject()
+
+    return render(request, 'uploadproject.html', {"form":form})

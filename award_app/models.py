@@ -13,21 +13,21 @@ class Project(models.Model):
     design_rating=models.ManyToManyField(User, related_name="rate_design")
     usability_rating=models.ManyToManyField(User, related_name="rate_usability")
     content_rating=models.ManyToManyField(User, related_name="rate_content")
-    average_review=models.IntegerField()
+    average_review=models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
 
 
 class Profile(models.Model):
-    name=models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    user=models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     bio=models.TextField()
     profile_pic=CloudinaryField('image')
     #projects=models.ForeignKey(Project, on_delete=models.CASCADE)
     contact=models.TextField()
 
     def __str__(self):
-        return self.name
+        return self.name    
 
 class Rating(models.Model):
     design=models.ForeignKey(Project, related_name="design_rated", on_delete=models.CASCADE)

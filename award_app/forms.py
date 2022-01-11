@@ -13,3 +13,9 @@ class CreateProfile(forms.ModelForm):
         model=Profile
         exclude=["name", "projects"]
         fields=["bio", "profile_pic", "contact"]
+
+class UploadNewProject(forms.ModelForm):
+    class Meta:
+        model=Project
+        exclude=['design_rating', 'usability_rating', 'content_rating', 'average_review', 'profile']
+        fields=['title', 'image', 'description', 'link'] 
