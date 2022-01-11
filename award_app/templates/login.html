@@ -4,6 +4,27 @@
 
 {% block content %}
 <div class="container-fluid">
+    
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form method="post", action=""> 
+                {% csrf_token %}
+                <label for="username">Enter username:</label>
+                <input type="text" name="username"><br>
+                <label for="password">Enter Password</label> 
+                <input type="password" name="password"><br>
+
+                {% for message in messages %}
+                {{message}}
+                {% endfor %}
+
+                <input type="submit" value="LOGIN" class="btn btn-success btn-block">
+            </form>
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
 
 </div>
 
