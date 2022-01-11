@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'award_app',
     'cloudinary',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -82,8 +83,10 @@ WSGI_APPLICATION = 'award_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'awardsapp',
+        'USER': 'andre',
+        'PASSWORD':'12345',
     }
 }
 
