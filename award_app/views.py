@@ -2,6 +2,9 @@ from django.shortcuts import render,redirect
 from .forms import SignupForm,CreateProfile
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.views.generic.edit import CreateView
+from .models import Profile
+
 
 # Create your views here.
 def home(request):
@@ -47,3 +50,12 @@ def login(request):
 def logout(request):
     logout(request)
     return redirect('home')
+
+class CreateProfileView(CreateView):
+    model=Profile
+    form_class=CreateProfile
+    template_name='createprofile.html'
+
+    def form_valid(self, form):
+        form.instance.user=self.request.user
+        return super().form_valid(form)
