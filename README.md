@@ -15,7 +15,7 @@ The application has an authentication system where users must register and log i
 This application is screen responsive
 
 ## Live link
-https://azu-gram.herokuapp.com/
+https://awards-app-azu.herokuapp.com/
 
 ## Features
 A user can:
