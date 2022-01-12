@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="row">
+                {% if projects %}
+                <p class="searchedmessage">Found {{projects|length}} of {{message}}</p>
+                {% else %}
+                <p class="searchedmessage">Found 0 projects of {{message}}</p>
+                {% endif %}  
+            </div>
+            <div class="row">
+                {% for project in projects %}
+                <div class="col-md-3 project-card">
+                    <img src="{{project.image.url}}">
+                    <br>
+                    <p class="searchedmessage"><a href="{% url 'viewproject' project.id %}">View Project </a></p>                 
+                </div>
+                {% endfor %}
+
+            </div>          
+
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+{% endblock %} 
