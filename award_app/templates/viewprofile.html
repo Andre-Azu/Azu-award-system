@@ -1,18 +1,19 @@
-{% extends 'projects/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% load bootstrap3 %}
 
 {% block content %}
 <div class="container-fluid">
-    <p>THIS IS A USER PROFILE</p>
+    <p>User Profile</p>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="row">
                 {% for user in user %}
-                <img src="{{user.profile_pic.url}}" alt="{{user.user}}">
-                <p>{{user.user}}</p>
-                <p>{{user.contact}}</p>
+                <img src="{{user.profile_pic.url}}" alt="{{user.user}}" id="userprofileimage">
+                <p>Name: {{user.user}}</p>
+                <p>Bio: {{user.bio}}</p>
+                <p>Contact Details: {{user.contact}}</p>
                 {% endfor %}
             </div>
             <div class="row">
