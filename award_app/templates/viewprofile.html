@@ -1,0 +1,32 @@
+{% extends 'projects/base.html' %}
+{% load static %}
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="container-fluid">
+    <p>THIS IS A USER PROFILE</p>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row">
+                {% for user in user %}
+                <img src="{{user.profile_pic.url}}" alt="{{user.user}}">
+                <p>{{user.user}}</p>
+                <p>{{user.contact}}</p>
+                {% endfor %}
+            </div>
+            <div class="row">
+                {% for project in projects %}
+                <img src="{{project.image.url}}" alt="{{project.title}}">
+                <h4>{{project.title}}</h4>
+                <p>{{project.description}}</p>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+{% endblock %} 
+  3 

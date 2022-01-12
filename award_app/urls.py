@@ -10,4 +10,5 @@ urlpatterns=[
     path('createprofile/', CreateProfileView.as_view(), name="createprofile"),
     path('uploadproject/', views.uploadProject, name="uploadproject"),
     path('viewproect/<int:pk>/', views.viewProject, name="viewproject"),
+    path('viewprofile/<int:pk>', views.viewProfile, name="viewprofile"),
 ] 

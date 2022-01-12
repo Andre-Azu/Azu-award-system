@@ -69,6 +69,15 @@ def viewProject(request, pk):
 
     return render(request, 'viewproject.html', {"project":project})
 
+def viewProfile(request, pk):
+    user=Profile.objects.filter(user_id=pk)
+    print(user)
+    projects=Project.objects.filter(profile_id=pk)
+    print(projects)
+
+    return render(request, "viewprofile.html", {"user":user, "projects":projects})
+
+
 
 @login_required(login_url='login')
 def uploadProject(request):

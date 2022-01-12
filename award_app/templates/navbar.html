@@ -25,7 +25,7 @@
 
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         {% if user.profile.id %}
-                            <li><a class="dropdown-item" href="#">View User Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'viewprofile' user.id %}">View User Profile</a></li>
                         {% else %}
                             <li><a class="dropdown-item" href="{% url 'createprofile' %}">Create User Profile</a></li>
                         {% endif %}

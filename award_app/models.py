@@ -27,7 +27,7 @@ class Profile(models.Model):
     contact=models.TextField()
 
     def __str__(self):
-        return self.name    
+        return str(self.user)  
 
 class Rating(models.Model):
     design=models.ForeignKey(Project, related_name="design_rated", on_delete=models.CASCADE)
