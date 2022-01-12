@@ -18,13 +18,14 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
-    def search_by_title(self):
-        pass
+    def search_by_title(search_term):
+        projects=Project.objects.filter(title__icontains=search_term)
+        return projects
 
 class Profile(models.Model):
     user=models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     bio=models.TextField()
-    profile_pic=CloudinaryField('image')
+    profile_pic=CloudinaryField('image' ,blank=True)
     #projects=models.ForeignKey(Project, on_delete=models.CASCADE)
     contact=models.TextField()
 
