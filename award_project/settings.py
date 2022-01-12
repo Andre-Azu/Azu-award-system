@@ -169,6 +169,8 @@ LOGIN_REDIRECT_URL="/"
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+    BASE_DIR / "static",
+    '/var/www/static/',
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
