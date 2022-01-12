@@ -28,7 +28,7 @@ def Signup(request):
 
     return render(request, "sign_up.html", {"form":form})
 
-def login(request):
+def user_login(request):
     if request.method=="POST":
         username=request.POST.get('username')
         password=request.POST.get('password')
@@ -37,9 +37,9 @@ def login(request):
             user=authenticate(username=username, password=password)
 
             if user is not None:
-                login(request, user)
+                login(request,user)
 
-                return redirect('index')
+                return redirect('home')
 
             else:
                 messages.error(request, "Username or password is Incorrect")

@@ -3,9 +3,9 @@ from . import views
 from .views import CreateProfileView
 
 urlpatterns=[
-    path('', views.home, name="home"),
-    path('signup/', views.Signup, name="signup"),
-    path('login/', views.login, name="login"),
+    path('home', views.home, name="home"),
+    path('', views.Signup, name="signup"),
+    path('login/', views.user_login, name="login"),
     path('logout/', views.Signup, name="logout"),
     path('createprofile/', CreateProfileView.as_view(), name="createprofile"),
     path('uploadproject/', views.uploadProject, name="uploadproject"),

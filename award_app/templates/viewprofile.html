@@ -3,24 +3,34 @@
 {% load bootstrap3 %}
 
 {% block content %}
-<div class="container-fluid"  style="color: #4846ca ; font-weight:italic ; font-size:23px ;font-family: Georgia, 'Times New Roman', Times, serif; padding-left: 400px;">
-    <p>User Profile</p>
+<div class="container-fluid"  style="color: #4846ca ; font-weight:italic ; font-size:23px ;font-family: Georgia, 'Times New Roman', Times, serif; ">
+    <p>All Profiles</p><br>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="row">
                 {% for user in user %}
-                <img src="{{user.profile_pic.url}}" alt="{{user.user}}" id="userprofileimage">
-                <p>Name: {{user.user}}</p>
-                <p>Bio: {{user.bio}}</p>
-                <p>Contact Details: {{user.contact}}</p>
+                <div class="panel-heading bg-info" style="border-radius: 7px; padding: 10px;">
+                    <p>Username: {{user.user}}</p>
+                </div>
+                <div class="panel-body" style="margin-top: -15px;border-radius: 10px;margin-left: 20px;margin-right: 20px">
+                <img style="max-width: 400px;border-radius: 200px; margin-top: 20px" src="{{user.profile_pic.url}}" alt="{{user.user}}" id="userprofileimage">                
+                <p class="bg-info" style="border-radius: 7px; padding: 10px;" >Bio: {{user.bio}}</p>
+                <p class="bg-info" style="border-radius: 7px; padding: 10px;">Contact Details: {{user.contact}}</p>
+                </div>
                 {% endfor %}
             </div>
             <div class="row">
+
+                <h1 class="bg-warning">List of projects</h1>
                 {% for project in projects %}
-                <img src="{{project.image.url}}" alt="{{project.title}}">
-                <h4>{{project.title}}</h4>
-                <p>{{project.description}}</p>
+                <img style="max-width:1000px; border-radius: 17px;" src="{{project.image.url}}" alt="{{project.title}}">
+                <h4 class="bg-success" style="font-family: sans-serif;font-size:30px; border-radius: 7px;">{{project.title}}</h4>
+                <p class="bg-warning" style="font-family: sans-serif; margin-top:-5px;border-radius: 7px;" >{{project.description}}</p>
+                <a href="{% url 'viewproject' project.id %}"><button style="font-family: Georgia; font-size: 17px;border-radius: 15px;padding: 15px 15px;background-color:green;
+                    color: rgb(66, 61, 61);
+                    border: 2px solid green;">View Project</button></a><br><br>
+                
                 {% endfor %}
             </div>
 
@@ -30,4 +40,3 @@
 </div>
 
 {% endblock %} 
-  3 
