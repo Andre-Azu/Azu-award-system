@@ -11,7 +11,7 @@
             <h4 style="margin:10px ;margin-bottom:0px; font-family: Georgia; font-size: 30px;border-radius: 15px;padding: 1px 15px;color: #af9d4c; text-decoration:wavy underline">{{project.title}}</h4>
         </div>
         <div class="panel-body bg-info" style="margin-top: -20px;border-radius: 7px;margin-left: 20px;margin-right: 20px">
-            <img src="{{project.image.url}}" alt="{{project.description}}">
+            <img style="max-width:500px" src="{{project.image.url}}" alt="{{project.description}}">
         <p style="color: #af9d4c; font-size:20px">{{project.description}}</p>
         <a href="{% url 'viewproject' project.id %}"><button style="font-family: Georgia; font-size: 17px;border-radius: 15px;padding: 15px 15px;background-color: rgb(105, 216, 179);
             color: rgb(66, 61, 61);
